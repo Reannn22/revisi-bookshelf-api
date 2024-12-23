@@ -1,16 +1,21 @@
-const Hapi = require('@hapi/hapi');
-const bookRoutes = require('./routes/booksRoutes');
+const HapiServer = require('@hapi/hapi');
+const routeConfigurations = require('./routes');
 
-const init = async () => {
-  const server = Hapi.server({
-    port: 9000,
+const startServer = async () => {
+  const serverInstance = HapiServer.server({
+    port: 9080,
     host: 'localhost',
   });
 
-  server.route(bookRoutes);
+  serverInstance.route(routeConfigurations);
 
-  await server.start();
-  console.log(`Server berjalan pada ${server.info.uri}`);
+  await serverInstance.start();
+  console.log(`Server is running at ${serverInstance.info.uri}`);
 };
 
-init();
+process.on('uncaughtException', (err) => {
+  console.error('An unexpected error occurred:', err);
+  process.exit(1);
+});
+
+startServer();

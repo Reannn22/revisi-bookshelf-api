@@ -1,14 +1,14 @@
 {
-  "name": "bookshelf-api",
+  "name": "library-management-api",
   "version": "1.0.0",
-  "description": "bookshelf api for dicoding submission",
-  "main": "server.js",
+  "description": "API for managing a digital library, part of Dicoding project submission (reannn22)",
+  "main": "src/server.js",
   "scripts": {
     "lint": "eslint .",
     "start": "node src/server.js",
-    "start-dev": "nodemon src/server.js"
+    "dev": "nodemon src/server.js"
   },
-  "author": "Falih Dzakwan Zuhdi",
+  "author": "Reyhan Capri Moraga",
   "license": "ISC",
   "devDependencies": {
     "@eslint/js": "^9.2.0",

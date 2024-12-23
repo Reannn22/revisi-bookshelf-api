@@ -1,14 +1,14 @@
-import globals from "globals";
-import pluginJs from "@eslint/js";
+import globalVariables from 'globals';
+import jsPlugin from '@eslint/js';
 
 export default [
   {
-    files: ["**/*.js"],
-    languageOptions: { sourceType: "commonjs" },
-    ignores: ["node_modules/", "package.json", "package-lock.json"]
+    files: ['**/*.js'],
+    options: { sourceType: 'module' },
+    exclude: ['node_modules/', 'package.json', 'package-lock.json']
   },
   {
-    languageOptions: { globals: globals.node }
+    options: { globals: globalVariables.node }
   },
-  pluginJs.configs.recommended,
+  jsPlugin.configs.suggested,
 ];

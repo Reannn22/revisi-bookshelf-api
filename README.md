@@ -1,32 +1,40 @@
-# Welcome to The Bookshelf-API Repository!
-This project is a backend service for managing a collection of books. It allows users to add, view, update, and delete books from their collection. The API is designed to meet the submission criteria for the Dicoding Academy course “Belajar Membuat Aplikasi Back-End untuk Pemula”
+Tes review Mandiri Submission Bookshelf API menggunakan cURL id Dicoding : Reannn22
 
-## Key Features
-* **Add Books**: Save new books to the collection.
-* **View All Books**: Retrieve a list of all books in the collection.
-* **View Book Details**: Retrieve detailed information about a specific book.
-* **Update Books**: Modify the details of an existing book.
-* **Delete Books**: Remove a book from the collection.
+// API dapat menyimpan buku
+curl -X POST http://localhost:9080/bookRecords -H "Content-Type: application/json" -d '{
+  "title": "Nama Buku",
+  "publicationYear": 2021,
+  "authorName": "Nama Penulis",
+  "description": "Ringkasan Buku",
+  "publisherName": "Penerbit",
+  "totalPages": 100,
+  "pagesRead": 10,
+  "isCurrentlyReading": true
+}'
 
-## Technologies Used
-* [Node.js](https://nodejs.org/) : JavaScript runtime for building the backend service.
-* [Hapi.js](https://hapi.dev/) : Framework for building web applications and backend services.
-* [Nanoid](https://www.npmjs.com/package/nanoid) : Library for generating unique IDs.
+// API dapat menampilkan seluruh buku
+curl -X GET http://localhost:9080/bookRecords
 
-## Getting Started
-### Prerequisites
-* **Node.js**: Ensure you have Node.js installed (version 14.17.0 or higher is recommended).
+// API dapat menampilkan detail buku
+curl -X GET http://localhost:9080/bookRecords/{bookId}
 
-### 1. Clone the repository:
-    git clone https://github.com/falihdzakwanz/Bookshelf-API.git    
-    cd Bookshelf-API    
+// API dapat mengubah data buku
+curl -X PUT http://localhost:9080/bookRecords/{bookId} -H "Content-Type: application/json" -d '{
+  "title": "Nama Buku Baru",
+  "publicationYear": 2022,
+  "authorName": "Nama Penulis Baru",
+  "description": "Ringkasan Buku Baru",
+  "publisherName": "Penerbit Baru",
+  "totalPages": 200,
+  "pagesRead": 20,
+  "isCurrentlyReading": false
+}'
 
-### 2. Install dependencies:
-    npm install    
+// API dapat menghapus buku
+curl -X DELETE http://localhost:9080/bookRecords/{bookId}
 
-### 3. Run the server:
-    npm run start
+// Project menggunakan port 9080
+http://localhost:9080/
 
-## Note
-This project is part of a submission for the Dicoding Academy course “Belajar Membuat Aplikasi Back-End untuk Pemula.” 
-Please do not reuse this project for your own submissions. It is intended for educational and open-source purposes only.
+// Project memiliki runner script dengan nama start
+npm run start
